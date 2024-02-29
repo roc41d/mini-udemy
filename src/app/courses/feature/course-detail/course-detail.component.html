@@ -44,3 +44,6 @@
     </div>
 </div>
 }
+<app-modal [showModal]="isCreateLectureModalOpen" (closeModal)="isCreateLectureModalOpen = false">
+    <app-create-lecture (formSubmit)="isCreateLectureModalOpen = false" [course]="course!"></app-create-lecture>
+</app-modal>
