@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { Course, Lecture } from '../../interface/types';
 import { COURSES, LECTURES } from '../../data-access/dummy-data';
 import { LoaderComponent } from '../../../shared/ui/loader.component';
+import { LectureListItemComponent } from '../../ui/lecture-list-item/lecture-list-item.component';
 
 @Component({
   selector: 'app-course-detail',
   standalone: true,
-  imports: [LoaderComponent],
+  imports: [LoaderComponent, LectureListItemComponent],
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.scss'
 })

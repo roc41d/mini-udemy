@@ -33,7 +33,7 @@
             <ul>
                 @for(lecture of lectures; track lecture.title) {
                 <li class="ml-4">
-                    lectures
+                    <app-lecture-list-item [course]="course" [lecture]="lecture"></app-lecture-list-item>
                 </li>
                 } @empty {
                 No lectures available. Create one.
