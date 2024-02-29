@@ -13,4 +13,11 @@ export const routes: Routes = [
         (comp) => comp.CourseListComponent
       ),
   },
+  {
+    path: 'courses/:id',
+    loadComponent: () =>
+      import('./courses/feature/course-detail/course-detail.component').then(
+        (comp) => comp.CourseDetailComponent
+      ),
+  }
 ];
