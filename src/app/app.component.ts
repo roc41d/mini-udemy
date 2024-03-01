@@ -7,9 +7,13 @@ import { FooterComponent } from './shared/ui/footer.component';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  template: `
+    <app-header></app-header>
+    <main class="min-h-screen">
+      <router-outlet />
+    </main>
+    <app-footer></app-footer>
+  `,
 })
 export class AppComponent {
-  title = 'mini-udemy';
 }
