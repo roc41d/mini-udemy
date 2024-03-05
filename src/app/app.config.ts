@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
@@ -11,7 +12,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     importProvidersFrom(
       provideFirebaseApp(() =>
-        initializeApp({}) 
+        initializeApp(environment.firebaseConfig) 
       )
     ),
     importProvidersFrom(provideAuth(() => getAuth())),
