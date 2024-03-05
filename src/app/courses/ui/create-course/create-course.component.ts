@@ -1,6 +1,8 @@
 import { NgIf } from '@angular/common';
 import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Course } from '../../interface/types';
+import { Firestore, doc, setDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-create-course',
@@ -12,7 +14,9 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class CreateCourseComponent {
   courseForm!: FormGroup;
   fb = inject(FormBuilder);
-  @Output() formSubmit = new EventEmitter<void>();
+  @Output() formSubmit = new EventEmitter<boolean>();
+  firestore = inject(Firestore);
+
   constructor() {
     this.courseForm = this.fb.group({
       title: ['', Validators.required],
@@ -21,5 +25,16 @@ export class CreateCourseComponent {
     });
   }
 
-  onSubmit() {}
+  onSubmit() {
+    const course: Course = {
+      ... this.courseForm.value,
+      id: self.crypto.randomUUID()
+    };
+    const docRef = doc(this.firestore, `courses/${course.id}`);
+    setDoc(docRef, course).then(() => {
+      this.formSubmit.emit(true);
+    }).catch((error) => {
+      console.error('Error adding document:', error);
+    });
+  }
 }
