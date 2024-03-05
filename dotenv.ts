@@ -19,6 +19,8 @@ const envConfigFile = `export const environment = {
     messagingSenderId: '${process.env['MESSAGING_SENDER_ID']}',
   },
   filestackApiKey: '${process.env['FILESTACK_API_KEY']}',
+  filestackPolicy: '${process.env['FILESTACK_POLICY']}',
+  filestackSignature: '${process.env['FILESTACK_SIGNATURE']}',
 };
 `;
 
