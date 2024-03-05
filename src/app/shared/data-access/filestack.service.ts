@@ -15,7 +15,7 @@ export class FilestackService {
     return this.client.picker(config).open();
   }
 
-  deleteImage(handle: string) {
+  deleteFile(handle: string) {
     return this.client.remove(handle, {
       policy: environment.filestackPolicy,
       signature: environment.filestackSignature

@@ -54,6 +54,6 @@ export class CourseCardComponent {
     if (!handle) {
       return
     }
-    await this.firestack.deleteImage(handle);
+    await this.firestack.deleteFile(handle);
   }
 }
