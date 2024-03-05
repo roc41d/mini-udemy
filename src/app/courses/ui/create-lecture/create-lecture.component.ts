@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Course, Lecture } from '../../interface/types';
-import { Firestore, doc, setDoc } from '@angular/fire/firestore';
+import { Firestore, doc, serverTimestamp, setDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-create-lecture',
@@ -31,7 +31,10 @@ export class CreateLectureComponent {
       id: self.crypto.randomUUID()
     };
     const docRef = doc(this.firestore, `courses/${this.course.id}/lectures/${lecture.id}`);
-    setDoc(docRef, lecture).then(() => {
+    setDoc(docRef, {
+      ...lecture,
+      cts: serverTimestamp() // cts = created timestamp
+    }).then(() => {
       this.formSubmit.emit();
       this.lectureForm.reset();
     }).catch((error) => {
