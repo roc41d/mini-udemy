@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+import { LowerCasePipe, NgIf } from '@angular/common';
 import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Course } from '../../interface/types';
@@ -7,7 +7,11 @@ import { Firestore, doc, setDoc } from '@angular/fire/firestore';
 @Component({
   selector: 'app-create-course',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf],
+  imports: [
+    ReactiveFormsModule,
+    NgIf,
+    LowerCasePipe
+  ],
   templateUrl: './create-course.component.html',
   styleUrl: './create-course.component.scss'
 })
@@ -16,6 +20,8 @@ export class CreateCourseComponent {
   fb = inject(FormBuilder);
   @Output() formSubmit = new EventEmitter<boolean>();
   firestore = inject(Firestore);
+
+  courseCategory: string[] = [ 'Angular', 'Firebase', 'TypeScript', 'JavaScript' ];
 
   constructor() {
     this.courseForm = this.fb.group({
