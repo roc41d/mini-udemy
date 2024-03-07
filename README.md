@@ -1,27 +1,48 @@
 # Mini Udemy
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.2.
+Showcasing proficiency in cutting-edge technologies including Firebase, Firestore, Filestack, and leveraging the latest features introduced in Angular 17
 
-## Development server
+## Getting started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Requirements
+```
+Node: v20.9.0
+NPM: 10.5.0
+Angular CLI: 17.2.3
+```
 
-## Code scaffolding
+### Installation
+Clone the repository
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+git clone git@github.com:roc41d/mini-udemy.git
+```
 
-## Build
+Switch to project folder
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+cd mini-udemy
+```
 
-## Running unit tests
+Install dependencies
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+npm i
+```
 
-## Running end-to-end tests
+Set up Firebase project and Firestore database
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Visit [Firebase Console](https://console.firebase.google.com) and create a new project and firestore database. Copy the configuration object from the project settings and fill in properties in `.env`.
 
-## Further help
+Set up Filestack API key
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Create a new account on [Filestack](https://dev.filestack.com) and copy the API key. Fill in the `FILESTACK_API_KEY` property in `.env`.
+
+
+Start local development server
+
+```
+npm start
+```
+
+You can now access the app via [http://localhost:4200](http://localhost:4200)
